@@ -6,3 +6,19 @@
 > 为什么用requireJS+handlebarsJS 来解决前台代码模块化，而没有用Vue.JS、angularjs、React，还是由于自己对Jquery熟悉一点、对Jquery相关插件熟悉一点，不想浪费而已。
 
 > 用了这么多UI框架，个人觉得最好用的还是JqueryEasyUI，用起来真的相当省心省时。
+
+* 启动efwplusNginxHost.exe
+
+![image](Docs/QQ截图20170323140359.png)
+
+* PC端效果
+
+![image](Docs/QQ截图20170323140443.png)
+
+* 手机端效果
+
+![image](Docs/QQ截图20170323140535.png)
+
+* 代码工程结构
+
+![image](Docs/QQ截图20170323140720.png)
