@@ -32,6 +32,18 @@
 
 ![image](Docs/images/QQ截图20170323140720.png)
 
+* 相关配置
+
+```xml
+<configuration>
+  <appSettings>
+    <add key="WebApiUri" value="http://localhost:8021"></add>
+    <add key="mongodb_binpath" value="C:\MongoDB\Server\3.2\bin"/>
+    <add key="mongodb_conn" value="mongodb://localhost:27017"/>
+  </appSettings>
+</configuration>
+```
+
 ## 快速开始
 
 * MenuController.cs 

@@ -13,18 +13,23 @@ namespace efwplusNginxHost
         static void Main(string[] args)
         {
             setprivatepath();
+            try
+            {
+                MongodbManager.StopDB();
+                MongodbManager.StartDB();
+                ShowMsg("MongoDB已启动");
+                NginxManager.StopWeb();
+                NginxManager.StartWeb();
+                ShowMsg("Nginx已启动");
+                efwplusWebApi.WebApiGlobal.ShowMsg = ShowMsg;
+                efwplusWebApi.WebApiGlobal.Main();
 
-            MongodbManager.StopDB();
-            MongodbManager.StartDB();
-            ShowMsg("MongoDB已启动");
-            NginxManager.StopWeb();
-            NginxManager.StartWeb();
-            ShowMsg("Nginx已启动");
-            efwplusWebApi.WebApiGlobal.ShowMsg = ShowMsg;
-            efwplusWebApi.WebApiGlobal.Main();
-
-            Process.Start("http://localhost:8088/login.html");
-
+                Process.Start("http://localhost:8088/login.html");
+            }
+            catch (Exception e)
+            {
+                ShowMsg("启动服务失败\n\r" + e.Message);
+            }
             while (true)
             {
                 System.Threading.Thread.Sleep(30 * 1000);
