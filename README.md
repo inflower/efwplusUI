@@ -44,6 +44,10 @@
 </configuration>
 ```
 
+* 数据库MongoDB
+
+![image](Docs/images/QQ截图20170324162023.png)
+
 ## 快速开始
 
 * MenuController.cs 
