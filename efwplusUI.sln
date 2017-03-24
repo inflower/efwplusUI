@@ -28,6 +28,13 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "html", "Nginx\html\", "{4B5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "efwplusWebApi", "efwplusWebApi\efwplusWebApi.csproj", "{F83871ED-9724-4C68-B44E-3FCB396E6213}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C4B184CA-BCD3-44AE-B2F1-D64A0EB4D26B}"
+	ProjectSection(SolutionItems) = preProject
+		efwplusNginxHost.exe.config = efwplusNginxHost.exe.config
+		MongoDB\mongo.conf = MongoDB\mongo.conf
+		Nginx\conf\nginx.conf = Nginx\conf\nginx.conf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

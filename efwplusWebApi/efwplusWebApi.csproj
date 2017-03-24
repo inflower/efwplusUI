@@ -30,6 +30,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\Component\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\Component\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\Component\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Component\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -56,8 +65,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\DESEncryptor.cs" />
     <Compile Include="App_Start\LocalAssembliesResolver.cs" />
     <Compile Include="App_Start\LocalHttpControllerSelector.cs" />
+    <Compile Include="App_Start\MongoHelperV2.3.cs" />
     <Compile Include="App_Start\UserActionFilter.cs" />
     <Compile Include="App_Start\WebApiSelfHosting.cs" />
     <Compile Include="Controllers\LoginController.cs" />

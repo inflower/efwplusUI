@@ -13,15 +13,15 @@ namespace efwplusNginxHost
         static void Main(string[] args)
         {
             setprivatepath();
-            efwplusWebApi.WebApiGlobal.ShowMsg = ((string msg)=>
-            {
-                string text = ("[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] : " + msg);
-                Console.WriteLine(text);
-            });
-            efwplusWebApi.WebApiGlobal.Main();
 
+            MongodbManager.StopDB();
+            MongodbManager.StartDB();
+            ShowMsg("MongoDB已启动");
             NginxManager.StopWeb();
             NginxManager.StartWeb();
+            ShowMsg("Nginx已启动");
+            efwplusWebApi.WebApiGlobal.ShowMsg = ShowMsg;
+            efwplusWebApi.WebApiGlobal.Main();
 
             Process.Start("http://localhost:8088/login.html");
 
@@ -39,6 +39,12 @@ namespace efwplusNginxHost
             var m = typeof(AppDomainSetup).GetMethod("UpdateContextProperty", BindingFlags.NonPublic | BindingFlags.Static);
             var funsion = typeof(AppDomain).GetMethod("GetFusionContext", BindingFlags.NonPublic | BindingFlags.Instance);
             m.Invoke(null, new object[] { funsion.Invoke(AppDomain.CurrentDomain, null), "PRIVATE_BINPATH", privatepath });
+        }
+
+        static void ShowMsg(string msg)
+        {
+            string text = ("[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] : " + msg);
+            Console.WriteLine(text);
         }
     }
 }
