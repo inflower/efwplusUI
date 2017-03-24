@@ -22,3 +22,86 @@
 * 代码工程结构
 
 ![image](Docs/images/QQ截图20170323140720.png)
+
+## 快速开始
+
+* MenuController.cs 
+> 编写后台WebApi控制器代码，向前台提供接口数据
+
+```c#
+public class MenuController : ApiController
+{
+	[HttpGet]
+	public object getmenu1()
+	{
+		return "菜单1";
+	}
+
+	[HttpGet]
+	public object getmenu2()
+	{
+		return "菜单2";
+	}
+
+	[HttpGet]
+	public object getmenu3()
+	{
+		return "菜单3";
+	}
+
+	[HttpGet]
+	public object getmenu4()
+	{
+		return "菜单4";
+	}
+}
+```
+
+* menu1.html 
+> 编写前台展示Html页面，主界面是通过require.js动态装载此页面
+
+```html
+<script id="menu1-template" type="text/x-handlebars-template">
+    <div class="am-u-sm-12 am-u-sm-centered">
+        <pre>{{data}}</pre>
+    </div>
+</script>
+```
+
+* menu1.js 
+> 编写前台页面对应的JS脚本代码，是采用AMD规范封装为一个模块
+
+```html
+define(['jquery', 'common', "handlebars.min", "text!../../handlebars/menu1.html"], function ($, common, Handlebars, html_template) {
+
+    //通用
+    function show_common(menuId, para, urls, templates, callback, errorcallback) {
+        if (!urls[menuId] || !templates[menuId]) {
+            $('#content_body').html(html_template);//加载html模板文本
+            //设置多个url和模板
+            urls[menuId] =  para;
+
+            templates[menuId] = Handlebars.compile($("#" + menuId + "-template").html());
+        }
+
+        common.simpleAjax(urls[menuId], {}, function (data) {
+            var context = { data: common.toJson(data) };
+            var html = templates[menuId](context);
+            $('#content_body').html(html);
+
+            if (callback) {
+                callback(data);
+            }
+        }, errorcallback);
+    }
+
+    //
+    function show_page(menuId, urls, templates) {
+        show_common(menuId, "menu/getmenu1", urls, templates);
+    }
+
+    return {
+        showpage: show_page
+    };
+});
+```
