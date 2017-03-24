@@ -9,6 +9,10 @@
 
 > 用了这么多UI框架，个人觉得最好用的还是JqueryEasyUI，用起来真的相当省心省时。
 
+* 下载发布程序
+
+[efwplusUI.rar](Docs/efwplusUI.rar)
+
 * 启动efwplusNginxHost.exe
 
 ![image](Docs/images/QQ截图20170323140359.png)
