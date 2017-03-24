@@ -22,23 +22,42 @@ namespace efwplusWebApi.App_Start
 
             WebApiGlobal.ShowMsg("开始执行：" + actionContext.Request.RequestUri.LocalPath);
 
-            //if (actionContext.Request.RequestUri.AbsolutePath.ToLower().IndexOf("/Login/submit".ToLower()) == -1)
-            //{
-            //    try
-            //    {
-            //        List<string> tokenlist = actionContext.Request.Headers.GetValues("token").ToList();
-            //        string token = tokenlist.Count == 0 ? "" : tokenlist[0];
-            //        AuthResult result = SsoHelper.ValidateToken(token);
-            //        if (result.ErrorMsg != null)
-            //            throw new Exception(result.ErrorMsg);
+            if (actionContext.Request.RequestUri.AbsolutePath.ToLower().IndexOf("/Login/submit".ToLower()) == -1)
+            {
+                try
+                {
+                    string token = null;
+                    string[] qs = actionContext.Request.RequestUri.Query.ToLower().Split(new char[] { '?', '&' });
+                    foreach (var s in qs)
+                    {
+                        string[] kv = s.Split(new char[] { '=' });
+                        if (kv.Length == 2 && kv[0] == "token")
+                        {
+                            token = kv[1];
+                            break;
+                        }
+                    }
 
-            //        actionContext.Request.Properties[tokenKey] = result.User;
-            //    }
-            //    catch (Exception e)
-            //    {
-            //        throw new Exception("token failed" + e.Message);
-            //    }
-            //}
+                    if ((token != null))
+                    {
+                        AuthResult result = SsoHelper.ValidateToken(token);
+                        if (!string.IsNullOrEmpty(result.ErrorMsg))
+                            throw new Exception(result.ErrorMsg);
+
+                        actionContext.Request.Properties[tokenKey] = result.User;
+                    }
+                    else
+                    {
+                        
+                        throw new Exception("token is empty");
+                    }
+                }
+                catch (Exception e)
+                {
+                    WebApiGlobal.ShowMsg("执行失败：token failed to " + actionContext.Request.RequestUri.LocalPath);
+                    throw new Exception("token failed !" + e.Message);
+                }
+            }
 
             base.OnActionExecuting(actionContext);
         }
