@@ -1,10 +1,15 @@
 ﻿define(['jquery', 'jquery.cookie'], function ($) {
-    var baseUrl = "http://"+window.location.hostname+":8021/efwapi/";
-    function simpleAjax(requestUrl, requestData, callback,errorback) {
+    var baseUrl = "http://" + window.location.hostname + ":8021/efwapi/";
+    var token = $.cookie("token");
+    function simpleAjax(requestUrl, requestData, callback, errorback) {
         $.ajax({
             type: "get",
-            url: baseUrl+requestUrl,
+            url: baseUrl + requestUrl,
             data: requestData,
+            //beforeSend: function (xhr) {
+            //    //    //发送ajax请求之前向http的head里面加入验证信息
+            //    xhr.setRequestHeader("Authorization", token);  // 请求发起前在头部附加token
+            //},
             success: function (retdata) {
                 if (callback)
                     callback(retdata);
@@ -15,11 +20,17 @@
             }
         });
     }
+
     function postAjax(requestUrl, requestData, callback, errorback) {
         $.ajax({
             type: "post",
-            url: baseUrl+requestUrl,
+            url: baseUrl + requestUrl,
             data: requestData,
+            //headers: { token: token },
+            //beforeSend: function (xhr) {
+            //    //    //发送ajax请求之前向http的head里面加入验证信息
+            //    xhr.setRequestHeader("token", token);  // 请求发起前在头部附加token
+            //},
             success: function (retdata) {
                 if (callback)
                     callback(retdata);
@@ -31,7 +42,7 @@
         });
     }
     function validateuser() {
-        var token = $.cookie("token");
+        
         simpleAjax('login/validatetoken', { token: token }, function (data) {
             if (!data.flag) {
                 $.cookie("token", null);//注销就删除cookie

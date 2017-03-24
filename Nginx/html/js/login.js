@@ -7,6 +7,7 @@
                 var retobj = data;
                 if (retobj.flag) {
                     $.cookie("username", retobj.username);
+                    $.cookie("token", retobj.token);
                     window.location.href = 'index.html';
                 } else {
                     //alert("登录失败，用户名或密码错误！");

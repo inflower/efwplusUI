@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using efwplusWebApi.App_Start;
+using efwplusWebApi.SSO;
 
 namespace efwplusWebApi
 {
@@ -16,6 +17,8 @@ namespace efwplusWebApi
             string url = System.Configuration.ConfigurationSettings.AppSettings["WebApiUri"];
             webapiHost = new WebApiSelfHosting(url);
             webapiHost.StartHost();
+
+            SsoHelper.Start();
 
             ShowMsg("WebAPI服务已启动");
         }

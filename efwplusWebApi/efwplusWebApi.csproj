@@ -63,6 +63,10 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SSO\AuthResult.cs" />
+    <Compile Include="SSO\SsoHelper.cs" />
+    <Compile Include="SSO\TokenInfo.cs" />
+    <Compile Include="SSO\TokenManager.cs" />
     <Compile Include="WebApiGlobal.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

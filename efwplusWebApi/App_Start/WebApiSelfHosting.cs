@@ -43,7 +43,6 @@ namespace efwplusWebApi.App_Start
             config.MaxBufferSize = 2097152;//最大缓存值2M
             config.MaxReceivedMessageSize = 2097152;
             //config.TransferMode = System.ServiceModel.TransferMode.Buffered;
-
             //
             config.Routes.MapHttpRoute(
                 "efwplusApi",
@@ -51,11 +50,11 @@ namespace efwplusWebApi.App_Start
                 new { id = RouteParameter.Optional });
 
             //指定程序集
-            //config.Services.Replace(typeof(IAssembliesResolver),
-            //                                       new LocalAssembliesResolver());
-            ////指定名称
-            //config.Services.Replace(typeof(IHttpControllerSelector),
-            //                                       new LocalHttpControllerSelector(config));
+            config.Services.Replace(typeof(IAssembliesResolver),
+                                                   new LocalAssembliesResolver());
+            //指定名称
+            config.Services.Replace(typeof(IHttpControllerSelector),
+                                                   new LocalHttpControllerSelector(config));
             //用户验证
             config.Filters.Add(new UserActionFilter());
 

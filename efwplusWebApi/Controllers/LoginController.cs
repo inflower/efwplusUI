@@ -13,7 +13,9 @@ namespace efwplusWebApi.Controllers
         [HttpPost]
         public object submit([FromBody] simpleUser siuser)
         {
-            return new { flag = true, username = siuser.usercode };
+            string token;
+            SSO.SsoHelper.SignIn(new SSO.UserInfo { UserCode = siuser.usercode, UserName = "", CreateDate = DateTime.Now }, out token);
+            return new { flag = true, username = siuser.usercode, token = token };
         }
     }
 
