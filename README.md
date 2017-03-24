@@ -1,6 +1,8 @@
 # efwplusUI
 这是一个简单Web框架，前台采用amaze UI +requireJS+handlebarsJS，后台采用WebApi返回数据，用Nginx做Http服务器，随着.Net Core的跨平台，所以此框架也是可以在Liunx下运行。
 
+为了保持WebApi接口访问安全，每次请求都增加了Token验证。
+
 > 为什么用amaze UI 而没有用bootstrap，主要还是考虑到移动端amaze UI效果更好点，但amaze UI很多地方都不是很好用，特别是哪些扩展插件。
 
 > 为什么用requireJS+handlebarsJS 来解决前台代码模块化，而没有用Vue.JS、angularjs、React，还是由于自己对Jquery熟悉一点、对Jquery相关插件熟悉一点，不想浪费而已。
@@ -71,7 +73,7 @@ public class MenuController : ApiController
 * menu1.js 
 > 编写前台页面对应的JS脚本代码，是采用AMD规范封装为一个模块
 
-```html
+```js
 define(['jquery', 'common', "handlebars.min", "text!../../handlebars/menu1.html"], function ($, common, Handlebars, html_template) {
 
     //通用
