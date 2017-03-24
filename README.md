@@ -1,5 +1,5 @@
 # efwplusUI
-这是一个简单Web框架，前台采用amaze UI +requireJS+handlebarsJS，后台采用WebApi返回数据，用Nginx做Http服务器，随着.Net Core的跨平台，所以此框架也是可以在Liunx下运行。
+这是一个简单Web框架，前台采用amaze UI +requireJS+handlebarsJS，后台采用WebApi+MongoDB，用Nginx做Http服务器，随着.Net Core的跨平台，所以此框架也是可以在Liunx下运行。
 
 为了保持WebApi接口访问安全，每次请求都增加了Token验证。
 
@@ -9,9 +9,12 @@
 
 > 用了这么多UI框架，个人觉得最好用的还是JqueryEasyUI，用起来真的相当省心省时。
 
-* 下载发布程序
+* 下载程序安装包
 
 [efwplusUI.rar](Docs/efwplusUI.rar)
+
+[MongoDB](https://www.mongodb.com/download-center)
+
 
 * 启动efwplusNginxHost.exe
 
