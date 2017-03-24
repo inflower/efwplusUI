@@ -8,3 +8,7 @@
 /efwplusWebApi/bin
 /efwplusWebApi/obj
 
+/.vs/efwplusUI/v14/.suo
+/efwplusWebApi/efwplusWebApi.csproj.user
+
+/MongoDB
