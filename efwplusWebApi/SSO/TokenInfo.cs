@@ -17,10 +17,12 @@ namespace efwplusWebApi.SSO
         public bool IsValid { get; set; }
         public UserInfo userinfo { get; set; }
     }
+
     public class UserInfo
     {
         public string UserName { get; set; }
         public string UserCode { get; set; }
         public DateTime CreateDate { get; set; }
+        public object Tag { get; set; }
     }
 }

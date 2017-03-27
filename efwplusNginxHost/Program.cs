@@ -23,7 +23,6 @@ namespace efwplusNginxHost
                 NginxManager.StopWeb();
                 NginxManager.StartWeb();
 
-
                 efwplusWebApi.WebApiGlobal.ShowMsg = ShowMsg;
                 efwplusWebApi.WebApiGlobal.Main();
 
@@ -54,5 +53,7 @@ namespace efwplusNginxHost
             string text = ("[" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "] : " + msg);
             Console.WriteLine(text);
         }
+
+        
     }
 }

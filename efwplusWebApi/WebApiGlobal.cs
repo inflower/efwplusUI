@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EFWCoreLib.CoreFrame.ProcessManage;
 using efwplusWebApi.App_Start;
 using efwplusWebApi.SSO;
 
@@ -12,8 +13,14 @@ namespace efwplusWebApi
     {
         public static Action<string> ShowMsg;
         static WebApiSelfHosting webapiHost = null;
+        public static NormalIPCManager normalIPC;
         public static void Main()
         {
+            Func<string, Dictionary<string, string>, string> _funcExecCmd = ExecuteCmd;
+            Action<string> _actionReceiveData = ShowMsg;
+            normalIPC = new NormalIPCManager(IPCType.efwplusWebAPI, _funcExecCmd, _actionReceiveData);
+
+
             string url = System.Configuration.ConfigurationSettings.AppSettings["WebApiUri"];
             webapiHost = new WebApiSelfHosting(url);
             webapiHost.StartHost();
@@ -28,6 +35,34 @@ namespace efwplusWebApi
             webapiHost.StopHost();
 
             ShowMsg("WebAPI服务已关闭");
+        }
+
+        static string ExecuteCmd(string m, Dictionary<string, string> a)
+        {
+            string retData = "succeed";
+            try
+            {
+
+                switch (m)
+                {
+                    case "stop":
+                        efwplusWebApi.WebApiGlobal.Exit();
+                        break;
+                    case "start":
+                        efwplusWebApi.WebApiGlobal.Main();
+                        break;
+                    case "close":
+                        Environment.Exit(0);
+                        break;
+                }
+                ShowMsg("efwplusWebApi命令执行完成：" + m);
+                return retData;
+            }
+            catch (Exception e)
+            {
+                retData = e.Message;
+                return retData;
+            }
         }
     }
 }

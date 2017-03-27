@@ -1,9 +1,9 @@
 ﻿define(["handlebars.min", "common", "text!../../handlebars/menu.html"], function (Handlebars, common, html_template) {
     
     var labmenus;//标签菜单显示
-    var urls;//模板数据请求地址
+    //var urls;//模板数据请求地址
     var templates;//模板内容
-    urls = new Array();
+    //urls = new Array();
     templates = new Array();//handlebars模板对象
     labmenus = new Array();
 
@@ -85,7 +85,7 @@
         $('#content_body').html("");//先清空
 
         require(["../../handlebars/" + menuId], function (page) {
-            page.showpage(menuId, urls, templates);
+            page.showpage(menuId, templates);
         });
     }
 

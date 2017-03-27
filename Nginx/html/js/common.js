@@ -1,4 +1,4 @@
-﻿define(['jquery', 'jquery.cookie'], function ($) {
+﻿define(['jquery', "handlebars.min", 'jquery.cookie'], function ($, Handlebars) {
     var baseUrl = "http://" + window.location.hostname + ":8021/efwapi/";
     var token = $.cookie("token");
     function simpleAjax(requestUrl, requestData, callback, errorback) {
@@ -54,6 +54,20 @@
             window.location.href = 'login.html';
         });
     }
+
+    //加载模板
+    function loadtemplate(menuId,templates, html_template,data) {
+        if (!templates[menuId]) {
+            $('#content_body').html(html_template);//加载html模板文本
+            //设置多个url和模板
+            //urls[menuId] = apiurl;
+            templates[menuId] = Handlebars.compile($("#" + menuId + "-template").html());
+        }
+
+        var html = templates[menuId](data);
+        $('#content_body').html(html);
+    }
+
     function isJson(obj) {
         var isjson = typeof (obj) == "object" && Object.prototype.toString.call(obj).toLowerCase() == "[object object]" && !obj.length;
         return isjson;
@@ -77,6 +91,7 @@
         simpleAjax: simpleAjax,
         postAjax:postAjax,
         validateuser: validateuser,
+        loadtemplate:loadtemplate,
         isJson: isJson,
         toJson: toJson
     };

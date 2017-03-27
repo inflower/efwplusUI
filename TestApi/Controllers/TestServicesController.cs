@@ -11,7 +11,7 @@ using TestApi.Models;
 
 namespace TestApi.Controllers
 {
-    public class TestServicesController: BaseApiController
+    public class TestServicesController: EApiController
     {
         //获取所有服务
         [HttpGet]

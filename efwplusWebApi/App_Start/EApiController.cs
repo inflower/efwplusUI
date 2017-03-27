@@ -12,7 +12,7 @@ using EFWCoreLib.WcfFrame.DataSerialize;
 
 namespace efwplusWebApi.App_Start
 {
-    public class BaseApiController: ApiController
+    public class EApiController: ApiController
     {
         #region 通讯方式连接池
         private ClientLinkPool fromPoolGetClientLink(string wcfpluginname, out ClientLink clientlink, out int? index)
@@ -103,6 +103,10 @@ namespace efwplusWebApi.App_Start
                         request.LoginRight = new SysLoginRight(1);
                         SSO.UserInfo user =(SSO.UserInfo)Request.Properties["__user_token__"];
                         //?
+                        if (user.Tag != null)
+                        {
+                            request.LoginRight = user.Tag as SysLoginRight;
+                        }
                     }
                     if (requestAction != null)
                         requestAction(request);
@@ -137,6 +141,10 @@ namespace efwplusWebApi.App_Start
                         request.LoginRight = new SysLoginRight(1);
                         SSO.UserInfo user = (SSO.UserInfo)Request.Properties["__user_token__"];
                         //?
+                        if (user.Tag != null)
+                        {
+                            request.LoginRight = user.Tag as SysLoginRight;
+                        }
                     }
                     if (requestAction != null)
                         requestAction(request);

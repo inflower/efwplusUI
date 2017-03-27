@@ -7,8 +7,13 @@
 /efwplusNginxHost/obj
 /efwplusWebApi/bin
 /efwplusWebApi/obj
+/TestApi/bin
+/TestApi/obj
+/MonitorPlatform/bin
+/MonitorPlatform/obj
 
 /.vs/efwplusUI/v14/.suo
 /efwplusWebApi/efwplusWebApi.csproj.user
 
 /MongoDB
+/MonitorPlatform/MonitorPlatform.csproj.user
