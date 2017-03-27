@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EFWCoreLib.ClientProxy">
+      <HintPath>..\Component\EFWCoreLib.ClientProxy.dll</HintPath>
+    </Reference>
     <Reference Include="MongoDB.Bson">
       <HintPath>..\Component\MongoDB.Bson.dll</HintPath>
     </Reference>
@@ -65,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\BaseApiController.cs" />
     <Compile Include="App_Start\DESEncryptor.cs" />
     <Compile Include="App_Start\LocalAssembliesResolver.cs" />
     <Compile Include="App_Start\LocalHttpControllerSelector.cs" />

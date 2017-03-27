@@ -61,7 +61,7 @@
         sysmenus = $.merge([{
             "moudleid": "moudle1", "moudlename": "模块1", "child": [
             { "Id": "menu1", "Name": "菜单1" },
-            { "Id": "menu2", "Name": "菜单2" }
+            { "Id": "testsevice", "Name": "菜单2" }
             ]}], sysmenus);
 
         $.each(sysmenus, function (i, n) {

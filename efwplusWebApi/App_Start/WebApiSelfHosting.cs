@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using System.Web.Http.SelfHost;
+using EFWCoreLib.WcfFrame;
 
 namespace efwplusWebApi.App_Start
 {
@@ -21,6 +22,9 @@ namespace efwplusWebApi.App_Start
                 WebApiUri = _WebApiUri;
             else
                 WebApiUri = "http://localhost:8088";
+
+            //初始化连接池,默认10分钟清理连接
+            ClientLinkPoolCache.Init(true, 100, 30, 600, "webapi", 30);
         }
 
         ~WebApiSelfHosting()

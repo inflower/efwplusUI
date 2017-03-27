@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EFWCoreLib.ClientProxy">
+      <HintPath>..\Component\EFWCoreLib.ClientProxy.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web.Http">
@@ -44,7 +47,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HelloController.cs" />
+    <Compile Include="Controllers\TestServicesController.cs" />
+    <Compile Include="Models\amazeuitreenode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\efwplusWebApi\efwplusWebApi.csproj">
+      <Project>{f83871ed-9724-4c68-b44e-3fcb396e6213}</Project>
+      <Name>efwplusWebApi</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
