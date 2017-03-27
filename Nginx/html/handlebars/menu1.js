@@ -23,7 +23,7 @@
 
     //
     function show_page(menuId, urls, templates) {
-        show_common(menuId, "menu/getmenu1", urls, templates);
+        show_common(menuId, "Hello/test", urls, templates);
     }
 
     return {

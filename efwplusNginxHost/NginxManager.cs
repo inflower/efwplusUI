@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -13,11 +14,15 @@ namespace efwplusNginxHost
     public class NginxManager
     {
         private static bool Isnginx = false;
+        public static Action<string> ShowMsg;
         /// <summary>
         /// 开启Nginx
         /// </summary>
         public static void StartWeb()
         {
+            Isnginx = ConfigurationSettings.AppSettings["nginx"] == "true" ? true : false;
+            if (Isnginx == false) return;
+
             try
             {
                 string nginxExe = AppDomain.CurrentDomain.BaseDirectory + @"\nginx\nginx.exe";
@@ -40,6 +45,8 @@ namespace efwplusNginxHost
                 pro.StandardInput.AutoFlush = true;
                 //string output = pro.StandardOutput.ReadToEnd();
                 //pro.Close();
+
+                ShowMsg("Nginx已启动");
             }
             catch (Exception e)
             {
@@ -51,6 +58,9 @@ namespace efwplusNginxHost
         /// </summary>
         public static void StopWeb()
         {
+            Isnginx = ConfigurationSettings.AppSettings["nginx"] == "true" ? true : false;
+            if (Isnginx == false) return;
+
             Process[] proc;
             try
             {
@@ -71,6 +81,8 @@ namespace efwplusNginxHost
                 }
             }
             catch { }
+
+            ShowMsg("Nginx已停止");
         }
     }
 }

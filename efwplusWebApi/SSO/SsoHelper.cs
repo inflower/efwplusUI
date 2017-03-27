@@ -5,9 +5,6 @@ namespace efwplusWebApi.SSO
 {
     /// <summary>
     /// 单点登录辅助类
-    /// 登录令牌由根节点生成，然后同步到各子节点
-    /// 令牌在子节点验证的时候，如果子节点没有此令牌则马上向根节点拉取所有令牌，如果拉取后还是没有，则验证失败
-    /// 
     /// </summary>
     public class SsoHelper
     {        

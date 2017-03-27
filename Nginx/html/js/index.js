@@ -1,5 +1,5 @@
 ﻿define(["handlebars.min", "common", "text!../../handlebars/menu.html"], function (Handlebars, common, html_template) {
-    var sysmenus;//系统菜单
+    
     var labmenus;//标签菜单显示
     var urls;//模板数据请求地址
     var templates;//模板内容
@@ -51,6 +51,7 @@
 
     //加载系统菜单
     function loadsysmenus() {
+        var sysmenus;//系统菜单
         //系统菜单Json对象
         sysmenus = [{
                 "moudleid": "moudle2", "moudlename": "模块2", "child": [

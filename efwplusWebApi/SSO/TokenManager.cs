@@ -19,7 +19,7 @@ namespace efwplusWebApi.SSO
         public static void Init()
         {
             tokenList = new List<TokenInfo>();
-            //60秒失效
+            //20分钟失效
             thTimer = new Timer(threadTimerCallback, null, _TimerPeriod, _TimerPeriod);
         }
 

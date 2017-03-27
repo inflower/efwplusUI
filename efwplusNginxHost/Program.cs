@@ -15,12 +15,15 @@ namespace efwplusNginxHost
             setprivatepath();
             try
             {
+                MongodbManager.ShowMsg = ShowMsg;
                 MongodbManager.StopDB();
                 MongodbManager.StartDB();
-                ShowMsg("MongoDB已启动");
+
+                NginxManager.ShowMsg = ShowMsg;
                 NginxManager.StopWeb();
                 NginxManager.StartWeb();
-                ShowMsg("Nginx已启动");
+
+
                 efwplusWebApi.WebApiGlobal.ShowMsg = ShowMsg;
                 efwplusWebApi.WebApiGlobal.Main();
 
@@ -38,7 +41,7 @@ namespace efwplusNginxHost
 
         static void setprivatepath()
         {
-            string privatepath = @"Component";
+            string privatepath = @"Component;ApiAssembly";
             AppDomain.CurrentDomain.SetData("PRIVATE_BINPATH", privatepath);
             AppDomain.CurrentDomain.SetData("BINPATH_PROBE_ONLY", privatepath);
             var m = typeof(AppDomainSetup).GetMethod("UpdateContextProperty", BindingFlags.NonPublic | BindingFlags.Static);

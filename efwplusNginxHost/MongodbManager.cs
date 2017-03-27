@@ -14,11 +14,16 @@ namespace efwplusNginxHost
     /// </summary>
     public class MongodbManager
     {
+        public static Action<string> ShowMsg;
+        static bool IsMongodb = false;
         /// <summary>
         /// 开启Mongodb
         /// </summary>
         public static void StartDB()
         {
+            IsMongodb = ConfigurationSettings.AppSettings["mongodb"] == "true" ? true : false;
+            if (IsMongodb == false) return;
+
             initpath();
             string config = String.Format(GetConfig_Temp(), AppDomain.CurrentDomain.BaseDirectory);
             SetConfig(config);
@@ -36,22 +41,30 @@ namespace efwplusNginxHost
             pro.StartInfo.CreateNoWindow = true;
             pro.Start();
             //pro.WaitForExit();
+
+            ShowMsg("MongoDB已启动");
         }
         /// <summary>
         /// 停止Mongodb
         /// </summary>
         public static void StopDB()
         {
+            IsMongodb = ConfigurationSettings.AppSettings["mongodb"] == "true" ? true : false;
+            if (IsMongodb == false) return;
+
             Process[] proc = Process.GetProcessesByName("mongod");//创建一个进程数组，把与此进程相关的资源关联。
             for (int i = 0; i < proc.Length; i++)
             {
                 proc[i].Kill();  //逐个结束进程.
             }
+
+            ShowMsg("MongoDB已停止");
         }
 
         private static string GetConfig_Temp()
         {
-            string mongoconf_temp = AppDomain.CurrentDomain.BaseDirectory + @"MongoDB\mongo_temp.conf";
+            string dbpath= ConfigurationSettings.AppSettings["mongodb_dbpath"];
+            string mongoconf_temp = (dbpath == "" ? AppDomain.CurrentDomain.BaseDirectory : dbpath) + @"MongoDB\mongo_temp.conf";
             string conf = null;
             FileInfo file = new FileInfo(mongoconf_temp);
             if (file.Exists)
