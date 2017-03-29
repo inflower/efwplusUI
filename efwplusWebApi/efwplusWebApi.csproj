@@ -75,15 +75,16 @@
     <Compile Include="App_Start\MongoHelperV2.3.cs" />
     <Compile Include="App_Start\UserActionFilter.cs" />
     <Compile Include="App_Start\WebApiSelfHosting.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\MenuController.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SSO\AuthResult.cs" />
     <Compile Include="SSO\SsoHelper.cs" />
     <Compile Include="SSO\TokenInfo.cs" />
     <Compile Include="SSO\TokenManager.cs" />
     <Compile Include="WebApiGlobal.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

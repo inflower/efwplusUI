@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\HelloController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\TestServicesController.cs" />
     <Compile Include="Models\amazeuitreenode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

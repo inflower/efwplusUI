@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 using System.Text;
 using MongoDB.Bson;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 
 namespace efwplusWebApi.App_Start
 {
@@ -25,6 +26,14 @@ namespace efwplusWebApi.App_Start
         {
             conn = ConfigurationSettings.AppSettings["mongodb_conn"];
             dbName = "DataBase";
+            collectionName = typeof(T).Name;
+            SetCollection();
+        }
+
+        public MongoHelper(string _dbName)
+        {
+            conn = ConfigurationSettings.AppSettings["mongodb_conn"];
+            dbName = _dbName;
             collectionName = typeof(T).Name;
             SetCollection();
         }
@@ -58,7 +67,10 @@ namespace efwplusWebApi.App_Start
         {
             ObjectId objid = new ObjectId(id);
             var filter = Builders<T>.Filter.Eq("_id", objid);
-            return this.collection.Find(filter).FirstAsync().Result;
+            Object model= this.collection.Find(filter).FirstAsync().Result;
+            if (model != null)
+                (model as AbstractMongoModel).id_string = (model as AbstractMongoModel).id.ToString();
+            return (T)model;
         }
 
         /// <summary>
@@ -68,7 +80,12 @@ namespace efwplusWebApi.App_Start
         /// <returns></returns>
         public List<T> FindAll(Expression<Func<T, bool>> filter)
         {
-            return this.collection.Find(filter).ToListAsync().Result;
+            List<T> list= this.collection.Find(filter).ToListAsync().Result;
+            foreach (Object model in list)
+            {
+                (model as AbstractMongoModel).id_string = (model as AbstractMongoModel).id.ToString();
+            }
+            return list;
         }
         /// <summary>
         /// 查询全部
@@ -76,7 +93,12 @@ namespace efwplusWebApi.App_Start
         /// <returns></returns>
         public List<T> FindAll()
         {
-            return this.collection.Find(Builders<T>.Filter.Empty).ToListAsync().Result;
+            List<T> list = this.collection.Find(Builders<T>.Filter.Empty).ToListAsync().Result;
+            foreach (Object model in list)
+            {
+                (model as AbstractMongoModel).id_string = (model as AbstractMongoModel).id.ToString();
+            }
+            return list;
         }
         /// <summary>
         /// 记录条数
@@ -99,6 +121,15 @@ namespace efwplusWebApi.App_Start
             return this.collection.UpdateOne(filter, update).ModifiedCount;
         }
 
+        public long Update(T model)
+        {
+            if ((model as AbstractMongoModel).id_string != null)
+                (model as AbstractMongoModel).id = new ObjectId((model as AbstractMongoModel).id_string);
+            ObjectId objid = new ObjectId((model as AbstractMongoModel).id_string);
+            var filter = Builders<T>.Filter.Eq("_id", objid);
+            return this.collection.ReplaceOne(filter, model).ModifiedCount;
+        }
+
         /// <summary>
         /// 添加
         /// </summary>
@@ -107,6 +138,7 @@ namespace efwplusWebApi.App_Start
         public bool Insert(T model)
         {
             this.collection.InsertOne(model);
+            (model as AbstractMongoModel).id_string = (model as AbstractMongoModel).id.ToString();
             return true;
         }
 
@@ -140,12 +172,27 @@ namespace efwplusWebApi.App_Start
         }
     }
 
+    [JsonObject(MemberSerialization.OptOut)]
     public abstract class AbstractMongoModel
     {
+        [JsonIgnore]
         public ObjectId id { get; set; }
         //[BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         //public DateTime created_at { get; set; }
         //[BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         //public DateTime updated_at { get; set; }
+
+        private string _id_string;
+        public string id_string
+        {
+            get
+            {
+                return _id_string;
+            }
+            set
+            {
+                _id_string = value;
+            }
+        }
     }
 }

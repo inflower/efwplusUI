@@ -9,7 +9,7 @@
 
     //初始化
     function init () {
-        //common.validateuser();//身份验证
+        common.validateuser();//身份验证
 
         $('#username').text($.cookie("username"));
         loadsysmenus();
@@ -53,16 +53,30 @@
     function loadsysmenus() {
         var sysmenus;//系统菜单
         //系统菜单Json对象
-        sysmenus = [{
-                "moudleid": "moudle2", "moudlename": "模块2", "child": [
-                { "Id": "menu3", "Name": "菜单3" },
-                { "Id": "menu4", "Name": "菜单4" }
-                ]}];
+        sysmenus = [
+             {
+                 "moudleid": "node", "moudlename": "节点配置管理", "child": [
+                 { "Id": "debuglog", "Name": "日志输出" },
+                 { "Id": "clientlist", "Name": "客户端列表" },
+                 { "Id": "showmnodeconfig", "Name": "配置信息" },
+                 { "Id": "sevicelist", "Name": "本地有效插件" },
+                 { "Id": "testsevice", "Name": "测试插件服务" },
+                 { "Id": "task", "Name": "定时任务" },
+                 { "Id": "register", "Name": "注册中间件" },
+                 { "Id": "localcmd", "Name": "执行命令" }
+                 ]
+             }];
         sysmenus = $.merge([{
-            "moudleid": "moudle1", "moudlename": "模块1", "child": [
-            { "Id": "menu1", "Name": "菜单1" },
-            { "Id": "testsevice", "Name": "菜单2" }
-            ]}], sysmenus);
+            "moudleid": "root", "moudlename": "中心监控平台", "child": [
+            { "Id": "mnodelist", "Name": "中间件管理" },
+            { "Id": "pluginlist", "Name": "服务插件管理" },
+            { "Id": "mnodeplugin", "Name": "节点配置插件" },
+            { "Id": "mnodestate", "Name": "节点监控图" },
+            { "Id": "upgrade", "Name": "发布升级包" }
+            //{ "Id": "testremoteservice", "Name": "远程测试服务" },
+            //{ "Id": "remotecmd", "Name": "远程执行命令" }
+            ]
+        }], sysmenus);
 
         $.each(sysmenus, function (i, n) {
             $.each(n.child, function (k, m) {
