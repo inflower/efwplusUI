@@ -1,5 +1,5 @@
-﻿<script id="modulemanage-template" type="text/x-handlebars-template">
-    <div class="easyui-layout" fit="true" title="模块管理">
+﻿<script id="deptmanage-template" type="text/x-handlebars-template">
+    <div class="easyui-layout" fit="true" title="科室管理">
         <div region="center" style="overflow:hidden;" border="false">
             <div class="easyui-layout" fit="true" border="false">
                 <div region="west" split="true" title="科室类别" style="width:400px;padding:0px;" border="false">
@@ -36,7 +36,7 @@
                     </tr>
                     <tr>
                         <td><label>分类:</label></td>
-                        <td><input id="txtclass" class="easyui-combotree" name="Layer" style="width:200px;" required="true">
+                        <td><input id="txtclass" class="easyui-combotree" name="Layer" style="width:200px;" url="Controller.aspx?controller=WebUIFrame@DeptEmployeeController&method=GetDeptLayers" required="true">
                     </tr>
                     <tr>
                         <td><label>是否停用:</label></td>

@@ -11,6 +11,10 @@
     function init () {
         //common.validateuser();//身份验证
 
+        require(["../../handlebars/welcome"], function (page) {
+            page.showpage("welcome", templates);
+        });
+
         $('#username').text($.cookie("username"));
         loadsysmenus();
         loadrouter();
@@ -18,28 +22,16 @@
         //$('#content_body').height(function () {
         //    return this.parent.outerHeight();
         //});
+        
     }
 
    
     //加载路由
     function loadrouter() {
         //菜单通过路由方式打开页面
-        var openlabel = function (menuId) {
-            //console.log("openmenu:" + menuId);
-            //if (menuId == 'home') {
-            //    $('#content_label').html('<strong class="am-text-primary am-text-lg">首页</strong> /');
-            //} else if (menuId == 'quit') {
-            //    //console.log(menuId);
-            //} else {
-            //    $('#content_label').html('<strong class="am-text-primary am-text-lg">' + labmenus[menuId][0] + '</strong> / <small>' + labmenus[menuId][1] + '</small>');
-            //}
-        };
-
         var opencontent = function (menuId) {
             //console.log("loadcontent:" + menuId);
-            if (menuId == 'home') {
-
-            } else if (menuId == 'quit') {
+            if (menuId == 'quit') {
                 window.location.href = 'login.html';
             } else {
                 showpage(menuId);
@@ -47,7 +39,7 @@
         };
 
         var routes = {
-            '/openmenu/:menuId': [openlabel, opencontent]
+            '/openmenu/:menuId': [opencontent]
         };
         var router = Router(routes);
         router.init();
@@ -58,23 +50,22 @@
         var sysmenus;//系统菜单
         //系统菜单Json对象
         sysmenus = [{
-            "moudleid": "moudle2", "moudlename": "模块2", "child": [
-            { "Id": "workermanage", "Name": "机构管理" },
-            { "Id": "setpassword", "Name": "密码重置" }
+            "moudleid": "syssetting", "moudlename": "系统设置", "child": [
+                { "Id": "workermanage", "Name": "机构管理" },
+                { "Id": "deptmanage", "Name": "科室管理" },
+                { "Id": "empmanage", "Name": "人员管理" },
+                { "Id": "usermanage", "Name": "用户管理" },
+                { "Id": "modulemanage", "Name": "模块管理" },
+            { "Id": "menumanage", "Name": "菜单管理" },
+            { "Id": "groupmenu", "Name": "角色权限" }
             ]
         }];
-        sysmenus = $.merge([{
-            "moudleid": "moudle1", "moudlename": "模块1", "child": [
-            { "Id": "menumanage", "Name": "菜单管理" },
-            { "Id": "modulemanage", "Name": "模块管理" }
-            ]
-        }], sysmenus);
 
-        $.each(sysmenus, function (i, n) {
-            $.each(n.child, function (k, m) {
-                labmenus[m.Id] = [n.moudlename, m.Name];
-            });
-        });
+        //$.each(sysmenus, function (i, n) {
+        //    $.each(n.child, function (k, m) {
+        //        labmenus[m.Id] = [n.moudlename, m.Name];
+        //    });
+        //});
 
         $('#content_body').html(html_template);//加载html模板文本
 
@@ -89,6 +80,7 @@
     //动态加载页面
     function showpage(menuId) {
         $('#content_body').html("");//先清空
+        $('#lastfoot').nextAll().remove();
 
         require(["../../handlebars/" + menuId], function (page) {
             page.showpage(menuId, templates);

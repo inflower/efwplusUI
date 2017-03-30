@@ -1,5 +1,20 @@
-﻿<script id="menu3-template" type="text/x-handlebars-template">
-    <div class="am-u-sm-12 am-u-sm-centered">
-        <pre>{{data}}</pre>
+﻿<script id="workermanage-template" type="text/x-handlebars-template">
+    <div class="easyui-layout" fit="true">
+        <div region="center" title="机构管理">
+            <div id="grid-tool">
+                <a href="#" class="easyui-linkbutton" plain="true" iconCls="icon-add" onclick="btn_start();">启用</a>
+            </div>
+            <table id="worklistGird" class="easyui-datagrid" toolbar="#grid-tool" fit="true" border="false" singleSelect="true">
+                <thead>
+                    <tr>
+                        <th field="WorkId" width="100">机构号</th>
+                        <th field="WorkNo" width="80">机构编码</th>
+                        <th field="WorkName" width="120">机构名称</th>
+                        <th field="Memo" width="200">机构描述</th>
+                        <th field="DelFlag" width="80">标识</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 </script>
