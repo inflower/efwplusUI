@@ -60,32 +60,32 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "monitor", "Nginx\monitor\",
 		SlnRelativePath = "Nginx\monitor\"
 	EndProjectSection
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "efwplusWeb", "Nginx\efwplusWeb\", "{A5E9487A-F39E-4FCD-B9BC-815C5F52E838}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MonitorSite", "MonitorSite", "{E6576029-E996-4774-9EAC-2F962479550C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cloudhis", "cloudhis", "{2CE7337B-4C44-43B2-8177-9459919B17D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestWeb", "TestWeb", "{65DC2FCA-23CF-46D3-A467-0F65DE4A3AEF}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "cloudhis", "Nginx\cloudhis\", "{A9976AC1-B4EF-4B1E-8B3D-B0E16267BE3A}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_14129"
-		Debug.AspNetCompiler.PhysicalPath = "Nginx\efwplusWeb\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_14129\"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_33095"
+		Debug.AspNetCompiler.PhysicalPath = "Nginx\cloudhis\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_33095\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_14129"
-		Release.AspNetCompiler.PhysicalPath = "Nginx\efwplusWeb\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_14129\"
+		Release.AspNetCompiler.VirtualPath = "/localhost_33095"
+		Release.AspNetCompiler.PhysicalPath = "Nginx\cloudhis\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_33095\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "14129"
-		SlnRelativePath = "Nginx\efwplusWeb\"
+		VWDPort = "33095"
+		SlnRelativePath = "Nginx\cloudhis\"
 	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MonitorSite", "MonitorSite", "{E6576029-E996-4774-9EAC-2F962479550C}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "efwplusWeb", "efwplusWeb", "{2CE7337B-4C44-43B2-8177-9459919B17D9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestWeb", "TestWeb", "{65DC2FCA-23CF-46D3-A467-0F65DE4A3AEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,10 +117,10 @@ Global
 		{13400527-8551-4A43-B3C9-3F3BE68184E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13400527-8551-4A43-B3C9-3F3BE68184E1}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{13400527-8551-4A43-B3C9-3F3BE68184E1}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{A5E9487A-F39E-4FCD-B9BC-815C5F52E838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5E9487A-F39E-4FCD-B9BC-815C5F52E838}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A5E9487A-F39E-4FCD-B9BC-815C5F52E838}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{A5E9487A-F39E-4FCD-B9BC-815C5F52E838}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{A9976AC1-B4EF-4B1E-8B3D-B0E16267BE3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9976AC1-B4EF-4B1E-8B3D-B0E16267BE3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9976AC1-B4EF-4B1E-8B3D-B0E16267BE3A}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9976AC1-B4EF-4B1E-8B3D-B0E16267BE3A}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -130,6 +130,6 @@ Global
 		{3B235BD1-5C67-4B2A-9309-E1E513484C72} = {65DC2FCA-23CF-46D3-A467-0F65DE4A3AEF}
 		{65460652-7121-4517-A87E-97D84A42580C} = {E6576029-E996-4774-9EAC-2F962479550C}
 		{13400527-8551-4A43-B3C9-3F3BE68184E1} = {E6576029-E996-4774-9EAC-2F962479550C}
-		{A5E9487A-F39E-4FCD-B9BC-815C5F52E838} = {2CE7337B-4C44-43B2-8177-9459919B17D9}
+		{A9976AC1-B4EF-4B1E-8B3D-B0E16267BE3A} = {2CE7337B-4C44-43B2-8177-9459919B17D9}
 	EndGlobalSection
 EndGlobal
