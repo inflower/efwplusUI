@@ -39,6 +39,54 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApi", "TestApi\TestApi.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitorPlatform", "MonitorPlatform\MonitorPlatform.csproj", "{65460652-7121-4517-A87E-97D84A42580C}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "monitor", "Nginx\monitor\", "{13400527-8551-4A43-B3C9-3F3BE68184E1}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_14070"
+		Debug.AspNetCompiler.PhysicalPath = "Nginx\monitor\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_14070\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_14070"
+		Release.AspNetCompiler.PhysicalPath = "Nginx\monitor\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_14070\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "14070"
+		SlnRelativePath = "Nginx\monitor\"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "efwplusWeb", "Nginx\efwplusWeb\", "{A5E9487A-F39E-4FCD-B9BC-815C5F52E838}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_14129"
+		Debug.AspNetCompiler.PhysicalPath = "Nginx\efwplusWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_14129\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_14129"
+		Release.AspNetCompiler.PhysicalPath = "Nginx\efwplusWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_14129\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "14129"
+		SlnRelativePath = "Nginx\efwplusWeb\"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MonitorSite", "MonitorSite", "{E6576029-E996-4774-9EAC-2F962479550C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "efwplusWeb", "efwplusWeb", "{2CE7337B-4C44-43B2-8177-9459919B17D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestWeb", "TestWeb", "{65DC2FCA-23CF-46D3-A467-0F65DE4A3AEF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,8 +113,23 @@ Global
 		{65460652-7121-4517-A87E-97D84A42580C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65460652-7121-4517-A87E-97D84A42580C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65460652-7121-4517-A87E-97D84A42580C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13400527-8551-4A43-B3C9-3F3BE68184E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13400527-8551-4A43-B3C9-3F3BE68184E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13400527-8551-4A43-B3C9-3F3BE68184E1}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{13400527-8551-4A43-B3C9-3F3BE68184E1}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{A5E9487A-F39E-4FCD-B9BC-815C5F52E838}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E9487A-F39E-4FCD-B9BC-815C5F52E838}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5E9487A-F39E-4FCD-B9BC-815C5F52E838}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5E9487A-F39E-4FCD-B9BC-815C5F52E838}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4B560357-D480-4DB6-9DD3-AC05978F0F74} = {65DC2FCA-23CF-46D3-A467-0F65DE4A3AEF}
+		{3B235BD1-5C67-4B2A-9309-E1E513484C72} = {65DC2FCA-23CF-46D3-A467-0F65DE4A3AEF}
+		{65460652-7121-4517-A87E-97D84A42580C} = {E6576029-E996-4774-9EAC-2F962479550C}
+		{13400527-8551-4A43-B3C9-3F3BE68184E1} = {E6576029-E996-4774-9EAC-2F962479550C}
+		{A5E9487A-F39E-4FCD-B9BC-815C5F52E838} = {2CE7337B-4C44-43B2-8177-9459919B17D9}
 	EndGlobalSection
 EndGlobal
