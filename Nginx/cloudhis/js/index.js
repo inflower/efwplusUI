@@ -1,11 +1,6 @@
 ﻿define(["handlebars.min", "common", "text!../../handlebars/menu.html"], function (Handlebars, common, html_template) {
     
-    var labmenus;//标签菜单显示
-    //var urls;//模板数据请求地址
-    var templates;//模板内容
-    //urls = new Array();
-    templates = new Array();//handlebars模板对象
-    labmenus = new Array();
+    var templates = new Array();//handlebars模板对象
 
     //初始化
     function init () {
@@ -16,13 +11,9 @@
         });
 
         $('#username').text($.cookie("username"));
+
         loadsysmenus();
         loadrouter();
-
-        //$('#content_body').height(function () {
-        //    return this.parent.outerHeight();
-        //});
-        
     }
 
    
@@ -60,12 +51,6 @@
             { "Id": "groupmenu", "Name": "角色权限" }
             ]
         }];
-
-        //$.each(sysmenus, function (i, n) {
-        //    $.each(n.child, function (k, m) {
-        //        labmenus[m.Id] = [n.moudlename, m.Name];
-        //    });
-        //});
 
         $('#content_body').html(html_template);//加载html模板文本
 
