@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,16 +13,18 @@ namespace efwplusWebApi
     public class WebApiGlobal
     {
         public static Action<string> ShowMsg;
-        static WebApiSelfHosting webapiHost = null;
         public static NormalIPCManager normalIPC;
+        public static string FileStore;
+
+        static WebApiSelfHosting webapiHost = null;
         public static void Main()
         {
             Func<string, Dictionary<string, string>, string> _funcExecCmd = ExecuteCmd;
             Action<string> _actionReceiveData = ShowMsg;
             normalIPC = new NormalIPCManager(IPCType.efwplusWebAPI, _funcExecCmd, _actionReceiveData);
+            FileStore= ConfigurationSettings.AppSettings["FileStore"];
 
-
-            string url = System.Configuration.ConfigurationSettings.AppSettings["WebApiUri"];
+            string url = ConfigurationSettings.AppSettings["WebApiUri"];
             webapiHost = new WebApiSelfHosting(url);
             webapiHost.StartHost();
 
