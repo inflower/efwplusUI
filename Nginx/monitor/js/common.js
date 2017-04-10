@@ -87,8 +87,15 @@
     }
 
     return {
-        baseUrl: function () { return baseUrl; },
-        postUrl: function (url) { return baseUrl + url + "?token=" + token; },
+        baseUrl: function (url) {
+            return baseUrl;
+        },
+        postUrl: function (url) {
+            if (url.indexOf("?") != -1) {
+                return baseUrl + url + "&token=" + token;
+            }
+            return baseUrl + url + "?token=" + token;
+        },
         simpleAjax: simpleAjax,
         postAjax:postAjax,
         validateuser: validateuser,

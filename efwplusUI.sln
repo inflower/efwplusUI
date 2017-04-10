@@ -28,7 +28,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "html", "Nginx\html\", "{4B5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "efwplusWebApi", "efwplusWebApi\efwplusWebApi.csproj", "{F83871ED-9724-4C68-B44E-3FCB396E6213}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C4B184CA-BCD3-44AE-B2F1-D64A0EB4D26B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "~Config", "~Config", "{C4B184CA-BCD3-44AE-B2F1-D64A0EB4D26B}"
 	ProjectSection(SolutionItems) = preProject
 		efwplusNginxHost.exe.config = efwplusNginxHost.exe.config
 		MongoDB\mongo.conf = MongoDB\mongo.conf
@@ -60,11 +60,11 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "monitor", "Nginx\monitor\",
 		SlnRelativePath = "Nginx\monitor\"
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MonitorSite", "MonitorSite", "{E6576029-E996-4774-9EAC-2F962479550C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02MonitorSite", "02MonitorSite", "{E6576029-E996-4774-9EAC-2F962479550C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cloudhis", "cloudhis", "{2CE7337B-4C44-43B2-8177-9459919B17D9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03CloudHIS", "03CloudHIS", "{2CE7337B-4C44-43B2-8177-9459919B17D9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestWeb", "TestWeb", "{65DC2FCA-23CF-46D3-A467-0F65DE4A3AEF}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01TestWeb", "01TestWeb", "{65DC2FCA-23CF-46D3-A467-0F65DE4A3AEF}"
 EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "cloudhis", "Nginx\cloudhis\", "{A9976AC1-B4EF-4B1E-8B3D-B0E16267BE3A}"
 	ProjectSection(WebsiteProperties) = preProject

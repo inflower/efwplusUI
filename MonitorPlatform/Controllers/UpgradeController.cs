@@ -17,50 +17,50 @@ namespace MonitorPlatform.Controllers
     /// </summary>
     public class UpgradeController : ApiController
     {
-        [HttpPost]
-        public string UploadMNode_updatexml()
+        //获取文件列表
+        [HttpGet]
+        public Object GetFiles()
         {
-            return Upload("MNodeUpgrade\\update.xml");
-        }
-        [HttpPost]
-        public string UploadMNode_updatezip()
-        {
-            return Upload("MNodeUpgrade\\update.zip");
+            string[] names = new string[3] { "MNodeUpgrade", "WebUpgrade", "ClientUpgrade" };
+            Dictionary<string, List<object>> filedic = new Dictionary<string, List<object>>();
+            foreach (string name in names)
+            {
+                string filepath = WebApiGlobal.FileStore + @"\" + name;
+                string[] files = Directory.GetFiles(filepath);
+                List<object> fileinfolist = new List<object>();
+                foreach (string f in files)
+                {
+                    FileInfo file = new FileInfo(f);
+                    fileinfolist.Add(new { filename = file.Name, filesize = System.Math.Ceiling(file.Length / 1024.0) + " KB", filepath = file.FullName, id = name + "\\" + file.Name });
+                }
+
+                filedic.Add(name, fileinfolist);
+            }
+            return filedic;
         }
 
-        [HttpPost]
-        public string UploadWeb_updatexml()
+        //删除文件
+        [HttpGet]
+        public void DeleteFile(string name)
         {
-            return Upload("WebUpgrade\\update.xml");
+            string filepath = WebApiGlobal.FileStore + @"\" + name;
+            FileInfo file = new FileInfo(filepath);
+            if (file.Exists)//如果存在则先删除
+            {
+                File.Delete(filepath);
+            }
         }
-        [HttpPost]
-        public string UploadWeb_updatezip()
-        {
-            return Upload("WebUpgrade\\update.zip");
-        }
-
-        [HttpPost]
-        public string UploadWin_updatexml()
-        {
-            return Upload("ClientUpgrade\\update.xml");
-        }
-        [HttpPost]
-        public string UploadWin_updatezip()
-        {
-            return Upload("ClientUpgrade\\update.zip");
-        }
-
 
         //返回上传后的文件名
-        //[HttpPost]
-        private string Upload(string upgradename)
+        [HttpPost]
+        public string Upload(string name)
         {
             if (!Request.Content.IsMimeMultipartContent())
             {
                 throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
             }
 
-            string filepath = WebApiGlobal.FileStore + @"\" + upgradename;
+            string filepath = WebApiGlobal.FileStore + @"\" + name;
             FileInfo file = new FileInfo(filepath);
             if (file.Exists)//如果存在则先删除
             {
@@ -82,11 +82,11 @@ namespace MonitorPlatform.Controllers
 
         //下载文件
         [HttpGet]
-        public HttpResponseMessage Download(string upgradename)
+        public HttpResponseMessage Download(string name)
         {
             try
             {
-                string filepath = WebApiGlobal.FileStore + @"\" + upgradename;
+                string filepath = WebApiGlobal.FileStore + @"\" + name;
                 FileInfo fileInfo = new FileInfo(filepath);
                 if (fileInfo.Exists == false)
                     return new HttpResponseMessage(HttpStatusCode.NotFound);
