@@ -1,4 +1,4 @@
-﻿define(['jquery', 'common', "handlebars.min", "text!../../handlebars/pluginlist.html", "jquery.json"], function ($, common, Handlebars, html_template) {
+﻿define(['jquery', 'jquery.upload', 'common', "handlebars.min", "text!../../handlebars/pluginlist.html", "jquery.json"], function ($, upload, common, Handlebars, html_template) {
 
     //保存插件
     function saveplugin(menuId, templates, formdata) {
@@ -95,6 +95,12 @@
                 saveplugin(menuId, templates, value);
             });
 
+            $('#btn_plugin_upload').click(function () {
+                var value = $('#content_body table tbody tr.am-active').attr("value");
+                value = $.evalJSON(value);
+                upload('Upgrade/Upload?name=PluginUpgrade\\' + value.pluginname + '.zip');
+            });
+            
 
             $('#btn_plugin_stop').click(function () {
                 var value = $('#content_body table tbody tr.am-active').attr("value");
@@ -122,6 +128,29 @@
                     $('#btn_plugin_stop').html("<span class='am-icon-remove'></span> 停用");
                 }
             });
+        });
+    }
+
+    function upload(url, callback) {
+        // 上传方法
+        $.upload({
+            // 上传地址
+            url: common.postUrl(url),
+            // 文件域名字
+            fileName: 'filedata',
+            // 其他表单数据
+            //params: { upgradename: 'MNodeUpgrade/update.xml' },
+            // 上传完成后, 返回json, text
+            dataType: 'json',
+            // 上传之前回调,return true表示可继续上传
+            onSend: function () {
+                return true;
+            },
+            // 上传之后回调
+            onComplate: function () {
+                //alert("upload done");
+                callback();
+            }
         });
     }
 
