@@ -22,7 +22,7 @@ namespace efwplusWebApi.App_Start
 
             WebApiGlobal.ShowMsg("开始执行：" + actionContext.Request.RequestUri.LocalPath);
 
-            if (actionContext.Request.RequestUri.AbsolutePath.ToLower().IndexOf("/Login/submit".ToLower()) == -1)
+            if (actionContext.Request.RequestUri.AbsolutePath.ToLower().IndexOf("/Login/submit".ToLower()) == -1 && WebApiGlobal.IsToken == true)
             {
                 try
                 {
@@ -48,7 +48,7 @@ namespace efwplusWebApi.App_Start
                     }
                     else
                     {
-                        
+
                         throw new Exception("token is empty");
                     }
                 }

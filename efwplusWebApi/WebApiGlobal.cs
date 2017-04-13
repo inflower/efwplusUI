@@ -15,6 +15,7 @@ namespace efwplusWebApi
         public static Action<string> ShowMsg;
         public static NormalIPCManager normalIPC;
         public static string FileStore;
+        public static bool IsToken = false;
 
         static WebApiSelfHosting webapiHost = null;
         public static void Main()
@@ -22,7 +23,8 @@ namespace efwplusWebApi
             Func<string, Dictionary<string, string>, string> _funcExecCmd = ExecuteCmd;
             Action<string> _actionReceiveData = ShowMsg;
             normalIPC = new NormalIPCManager(IPCType.efwplusWebAPI, _funcExecCmd, _actionReceiveData);
-            FileStore= ConfigurationSettings.AppSettings["FileStore"];
+            IsToken = ConfigurationSettings.AppSettings["istoken"] == "true" ? true : false;
+            FileStore = ConfigurationSettings.AppSettings["FileStore"];
 
             string url = ConfigurationSettings.AppSettings["WebApiUri"];
             webapiHost = new WebApiSelfHosting(url);
